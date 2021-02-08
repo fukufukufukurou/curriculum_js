@@ -1,25 +1,71 @@
-.items {
-  display: flex;
-  width: 800px;
-  margin: 0 auto;
+*{
+  box-sizing:border-box;
 }
 
-.items:nth-child(even) {
-  flex-direction: row-reverse;
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:80px;
+  width:100%;
+  position:fixed;
+  padding:0 50px;
+  background-color:white;
+  box-shadow:3px 3px rgba(0,0,0,.75);
+  z-index:9999;
 }
 
-/* .item {
-  width: 180px;
-} */
-
-.pic {
-  width: 150px;
-  height: 100px;
-  /* margin: 0 auto; */
-  /* display: block; */
+header h1{
+  letter-spacing:4px;
+  font-weight:bold;
 }
 
-.item h1 {
-  text-align: center;
-  margin-top: 0;
+ul{
+  display:flex;
+  list-style:none;
 }
+nav ul li{
+  margin-right:20px;
+}
+
+header a{
+  text-decoration:none;
+  font-weight:bold;
+  color:black;
+  position:relative;
+  opacity:0.5;
+  
+}
+
+header a::after{
+  position:absolute;
+  content:'';
+  width:0px;
+  height:3px;
+  left:0px;
+  bottom:-8px;
+  background-color:rgba(142,209,252,0.7);
+  transition:.3s;
+}
+
+header a:hover:after{
+  width:100%;
+}
+
+header a:hover{
+  opacity:1;
+  transition:.3s;
+}
+
+/*ここから「当クリニックの３つの特徴」*/
+h2{
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:25px;
+}
+
+.three-features{
+  margin-top:100px;
+  text-align:center;
+}
+
