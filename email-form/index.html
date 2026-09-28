@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>質問フォーム</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 480px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
+    label {
+      display: block;
+      margin-top: 16px;
+      font-weight: bold;
+    }
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 4px;
+      padding: 8px;
+      font-size: 1em;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 24px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    p.note {
+      color: #555;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <h1>質問フォーム</h1>
+  <form id="form">
+    <label for="q1">質問1</label>
+    <textarea id="q1" rows="4"></textarea>
+
+    <label for="q2">質問2</label>
+    <textarea id="q2" rows="4"></textarea>
+
+    <button type="submit">送信</button>
+  </form>
+  <p class="note">送信ボタンを押すと、お使いのメールソフトで宛先・本文が入力済みの新規メールが開きます。内容をご確認のうえ、メールソフト側で送信してください。</p>
+
+  <script>
+    const TO_ADDRESS = 'xhmm36794@zeus.eonet.ne.jp';
+
+    document.getElementById('form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const q1 = document.getElementById('q1').value;
+      const q2 = document.getElementById('q2').value;
+
+      const subject = '質問フォームからのお問い合わせ';
+      const body = '質問1:\n' + q1 + '\n\n質問2:\n' + q2;
+
+      const mailtoUrl = 'mailto:' + encodeURIComponent(TO_ADDRESS)
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+
+      window.location.href = mailtoUrl;
+    });
+  </script>
+</body>
+</html>
